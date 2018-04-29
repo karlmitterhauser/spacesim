@@ -22,15 +22,14 @@ class Planet(ABC):
         prices = {'wheat': 0, 'iron': 0, 'phone': 0}
         self.prices = prices
         self.name = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
-        
-    @abstractmethod    
+          
     def getPrices(self):
-        pass
+        return self.prices
     
     @abstractmethod
     def setPrices(self):
         pass
             
-    @abstractmethod
+    
     def getName(self):
-        pass   
+        return self.name 
