@@ -1,10 +1,12 @@
 '''
 Created on 01.05.2018
-
 @author: Karl
 '''
 from Fighter import Fighter
 from Cargo import Cargo
+from Agri import Agri
+from Industry import Industry
+from HighTech import HighTech
 
 money = 1000
 ships = []
@@ -33,4 +35,23 @@ if(choice == 1 or choice == 2):
         else:
             cc = cc + 1
     print(str(cf) + " x Fighter")
-    print(str(cc) + " x Cargo")
+print(str(cc) + " x Cargo")
+
+#Test for the planet Mechanics
+myPlanetA = Agri()
+print('Agriculture Planet = ' +myPlanetA.getName())
+pricel = myPlanetA.getPrices()
+for key,value in pricel.items():
+    print('Price of ' +key+ ' is ' ,value)
+        
+myPlanetB = Industry()
+print('Industry Planet = ' +myPlanetB.getName())
+pricel = myPlanetB.getPrices()
+for key,value in pricel.items():
+    print('Price of ' +key+ ' is ' ,value)
+        
+myPlanetC = HighTech()
+print('HighTech Planet = ' +myPlanetC.getName())
+pricel = myPlanetC.getPrices()
+for key,value in pricel.items():
+    print('Price of ' +key+ ' is ' ,value)
