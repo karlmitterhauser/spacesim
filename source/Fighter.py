@@ -17,7 +17,7 @@ type: What kind of ship it is
 class Fighter(Spaceship):
     def __init__(self):
         super().__init__()
-        self.firepower = randint(100, 150)
+        self.firepower = self.price * 2
         self.type = "Fighter"
         
     def getFirepower(self):
