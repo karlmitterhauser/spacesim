@@ -8,6 +8,7 @@ from Cargo import Cargo
 from Agri import Agri
 from Industry import Industry
 from HighTech import HighTech
+import os
 
 #Variables
 money = 1000
@@ -32,24 +33,36 @@ def chooseDest():
         print("Please enter a valid number!")
     return activePlanet
 
-#Setup
-name = input("Please enter your name: ")
-print("Welcome to SpaceSim " + name + "!")
-print("Which planet would you like to travel to first? ")
-activePlanet = chooseDest()
+def mainMenu():
+    while(True):
+        print("Welcome to " + activePlanet.__class__.__name__ + " planet " + activePlanet.getName())
+        print("")
+        print("What would you like to do?")
+        print("[1] Buy ship")
+        print("[2] Sell ship")
+        print("[3] View own ships")
+        print("[4] Buy goods")
+        print("[5] Sell goods")
+        print("[0] Travel to the next planet")
+        choice = 0
+        choice = input()
+        if(choice == "1"):
+            buyShip()
 
-#Main Menu
-print("Welcome to " + activePlanet.getType) + " planet " + activePlanet.getName())
-
-
-choice = 0 
-if(choice == 1 or choice == 2):
-    if(choice == 1):
-        ships.insert(len(ships), Fighter())
-        print("You bought a Fighter Ship")
-        if(choice == 2):
+def buyShip():
+    choice = 0
+    print("What would you like to buy?")
+    print("[1] Fighter Ship")
+    print("[2] Cargo Ship")
+    print("[0] Nothing")
+    choice = input()
+    if(choice == "1" or choice == "2"):
+        if(choice == "1"):
+            ships.insert(len(ships), Fighter())
+            print("You bought a Fighter Ship")
+        if(choice == "2"):
             ships.insert(len(ships), Cargo())
-    print("You bought a Cargo Ship")
+            print("Thank you for your purchase!")
 
     print("You currently have these ships: ")
     cf = 0
@@ -59,28 +72,14 @@ if(choice == 1 or choice == 2):
             cf = cf + 1
         else:
             cc = cc + 1
-        print(str(cf) + " x Fighter")
-        print(str(cc) + " x Cargo")
+    print(str(cf) + " x Fighter")
+    print(str(cc) + " x Cargo")
+    input("Press return to accept")
         
 
-
-'''
-#Test for the planet Mechanics
-myPlanetA = Agri()
-print('Agriculture Planet = ' +myPlanetA.getName())
-pricel = myPlanetA.getPrices()
-for key,value in pricel.items():
-print('Price of ' +key+ ' is ' ,value)
-    
-myPlanetB = Industry()
-print('Industry Planet = ' +myPlanetB.getName())
-pricel = myPlanetB.getPrices()
-for key,value in pricel.items():
-print('Price of ' +key+ ' is ' ,value)
-    
-myPlanetC = HighTech()
-print('HighTech Planet = ' +myPlanetC.getName())
-pricel = myPlanetC.getPrices()
-for key,value in pricel.items():
-print('Price of ' +key+ ' is ' ,value)
-'''
+#Setup
+name = input("Please enter your name: ")
+print("Welcome to SpaceSim " + name + "!")
+print("Which planet would you like to travel to first? ")
+activePlanet = chooseDest()
+mainMenu()
