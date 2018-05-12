@@ -13,7 +13,6 @@ class Industry(Planet):
     dictionary
     '''
 
-
     def __init__(self):
         '''
         Constructor

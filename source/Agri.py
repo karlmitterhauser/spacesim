@@ -14,7 +14,6 @@ class Agri(Planet):
     dictionary
     '''
 
-
     def __init__(self):
         '''
         Constructor

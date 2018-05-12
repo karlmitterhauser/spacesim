@@ -12,8 +12,7 @@ class HighTech(Planet):
     This is a class that inherits from Planet, it inherits a name and a price
     dictionary
     '''
-
-
+       
     def __init__(self):
         '''
         Constructor

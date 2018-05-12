@@ -29,7 +29,6 @@ class Planet(ABC):
     @abstractmethod
     def setPrices(self):
         pass
-            
     
     def getName(self):
         return self.name 
