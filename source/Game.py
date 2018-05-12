@@ -18,8 +18,8 @@ name = None
 #Methods
 def chooseDest():
     while(True):
+        print("Choose your planet!")
         choice = input("Agriculture[1], Industry[2], HighTech[3]")
-            
         if(choice == "1"):
             activePlanet = Agri()
             break
@@ -48,7 +48,7 @@ def mainMenu():
         choice = input()
         if(choice == "1"):
             buyShip()
-
+        
 def buyShip():
     choice = 0
     print("What would you like to buy?")
@@ -68,7 +68,7 @@ def buyShip():
     cf = 0
     cc = 0
     for s in ships:
-        if(s.getType() == "Fighter"):
+        if(s.__class__.__name__ == "Fighter"):
             cf = cf + 1
         else:
             cc = cc + 1

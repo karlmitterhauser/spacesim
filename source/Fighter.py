@@ -18,10 +18,6 @@ class Fighter(Spaceship):
     def __init__(self):
         super().__init__()
         self.firepower = self.price * 2
-        self.type = "Fighter"
         
     def getFirepower(self):
         return self.firepower
-    
-    def getType(self):
-        return self.type

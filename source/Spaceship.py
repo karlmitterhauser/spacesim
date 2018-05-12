@@ -17,10 +17,6 @@ class Spaceship(ABC):
     def __init__(self):
         self.price = randint(80, 120)
         self.hitpoints = randint(100, 200)
-    
-    @abstractmethod
-    def getType(self):
-        pass   
      
     def getPrice(self):
         return self.price
