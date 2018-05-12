@@ -18,11 +18,11 @@ type: What kind of ship it is
 class Cargo(Spaceship):
     def __init__(self):
         super().__init__()
-        self.cargoDict = {'wheat': 0, 'iron': 0, 'phone': 0}
+        #self.cargoDict = {'wheat': 0, 'iron': 0, 'phone': 0}
         self.cargoSpace = randint(500, 1000)
         
-    def getCargoDict(self):
-        return self.cargoDict
+    #def getCargoDict(self):
+        #return self.cargoDict
     
     def getCargoSpace(self):
         return self.cargoDict
