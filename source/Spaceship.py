@@ -15,15 +15,7 @@ hitpoint: How much damage a ship can take before it breaks
 
 class Spaceship(ABC):
     def __init__(self):
-        self.price = randint(80, 120)
-        self.hitpoints = randint(100, 200)
-    
-    @abstractmethod
-    def getType(self):
-        pass   
+        self.price = randint(50, 120)
      
     def getPrice(self):
         return self.price
-    
-    def getHitpoints(self):
-        return self.hitpoints
