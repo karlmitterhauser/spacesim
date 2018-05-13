@@ -19,10 +19,10 @@ class Cargo(Spaceship):
     def __init__(self):
         super().__init__()
         #self.cargoDict = {'wheat': 0, 'iron': 0, 'phone': 0}
-        self.cargoSpace = randint(500, 1000)
+        self.cargoSpace = self.price * 5
         
     #def getCargoDict(self):
         #return self.cargoDict
     
     def getCargoSpace(self):
-        return self.cargoDict
+        return self.cargoSpace
