@@ -8,7 +8,6 @@ from Cargo import Cargo
 from Agri import Agri
 from Industry import Industry
 from HighTech import HighTech
-import os
 import sys
 from random import randint
 from random import uniform
@@ -31,9 +30,9 @@ def randomEvent():
     global money
     print("You are under attack Captain" +name)
     yourPower = firePowerCalk()
-    print("Your firepower is" +str(firePowerCalk()))
+    print("Your firepower is " + str(firePowerCalk()))
     enemiePower = int(yourPower * round(uniform(0.7,1.1),1))
-    print("The enemies firepower is" +str(enemiePower))
+    print("The enemies firepower is " + str(enemiePower))
     if(enemiePower >= yourPower):
         print("You lose!")
         sys.exit(0)
@@ -186,18 +185,61 @@ def buyShip():
     global ships
     global money
     #function
-    print("What would you like to buy?")
-    print("[1] Fighter Ship")
-    print("[2] Cargo Ship")
-    print("[0] Nothing")
-    choice = input()
-    if(choice == "1" or choice == "2"):
-        if(choice == "1"):
-            ships.insert(len(ships), Fighter()) 
-            print("You bought a Fighter Ship")
-        if(choice == "2"):
-            ships.insert(len(ships), Cargo())
-            print("You bought a Cargo Ship")
+    while True:
+        print("Current money: " + str(money))
+        print("What would you like to buy?")
+        print("[1] Fighter Ship")
+        print("[2] Cargo Ship")
+        print("[0] Nothing")
+        choice = input()
+        if(choice == '1' or choice == '2'):
+            if(choice == '1'):
+                tempShip = Fighter()
+                print("Price: " + str(tempShip.getPrice()))
+                print("Firepower: " + str(tempShip.getFirepower()))
+                print()
+                print("[1] Confirm purchase")
+                print("[2] Go back to overview")
+                print("[3] Leave shop")
+                choice = input()
+                if choice == '1':
+                    if money >= tempShip.getPrice():
+                        money = money - tempShip.getPrice()
+                        ships.insert(len(ships), tempShip)
+                        print("You bought a Fighter Ship")
+                        print()
+                    else:
+                        print("You can't afford this ship")
+                        print()
+                if choice == '3':
+                    break
+                
+            if(choice == '2'):
+                tempShip = Cargo()
+                print("Price: " + str(tempShip.getPrice()))
+                print("Cargo Space: " + str(tempShip.getCargoSpace()))
+                print()
+                print("[1] Confirm purchase")
+                print("[2] Go back to overview")
+                print("[3] Leave shop")
+                choice = input()
+                print()
+                if choice == '1':
+                    if money >= tempShip.getPrice():
+                        money = money - tempShip.getPrice()
+                        ships.insert(len(ships), tempShip)
+                        print("You bought a Cargo Ship")
+                        print()
+                    else:
+                        print("You can't afford this ship")
+                        print()
+                if choice == '3':
+                    break
+                
+        if choice == '0':
+            print()
+            print()
+            break
 
     print("You currently have these ships: ")
     cf = 0
