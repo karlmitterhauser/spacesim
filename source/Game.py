@@ -37,7 +37,7 @@ def randomEvent():
         print("You lose!")
         sys.exit(0)
     else:
-        print("You win and get the money of the enemies")
+        print("You win and get the money of the enemies(" +str(enemiePower)+")")
         money = money + enemiePower
     input("Press return to continue")    
 def travel():
