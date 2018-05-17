@@ -92,26 +92,28 @@ def sellGoods():
     print("The selling prices are as followed")
     for key,value in prices.items():
         print(key +": " + str(value))
-    ichoice = input("What do you want to sell: wheat[1], iron[2] or phones[3]?")
-    number = int(input("How many do you want to sell?"))
-    if(ichoice == "1"):
-        if(wares['wheat'] >= number):
-            money = money + (prices['wheat'] * number)
-            wares['wheat'] = wares['wheat'] - number
-        else:
-            print("Not enough wheat to sell")
-    if(ichoice == "2"):
-        if(wares['iron'] >= number):
-            money = money + (prices['iron'] * number)
-            wares['iron'] = wares['iron'] - number
-        else:
-            print("Not enough Iron to sell")
-    if(ichoice == "3"):
-        if(wares['phone'] >= number):
-            money = money + (prices['phone'] * number)
-            wares['phone'] = wares['phone'] - number
-        else:
-            print("Not enough phones to sell")
+    ichoice = input("What do you want to sell: wheat[1], iron[2], phones[3] or nothing[0]?")
+    if(ichoice != "0"):
+        number = int(input("How many do you want to sell?"))
+        if(ichoice == "1"):
+            if(wares['wheat'] >= number):
+                money = money + (prices['wheat'] * number)
+                wares['wheat'] = wares['wheat'] - number
+            else:
+                print("Not enough wheat to sell")
+        if(ichoice == "2"):
+            if(wares['iron'] >= number):
+                money = money + (prices['iron'] * number)
+                wares['iron'] = wares['iron'] - number
+            else:
+                print("Not enough Iron to sell")
+        if(ichoice == "3"):
+            if(wares['phone'] >= number):
+                money = money + (prices['phone'] * number)
+                wares['phone'] = wares['phone'] - number
+            else:
+                print("Not enough phones to sell")
+
 def buyGoods():
     '''
     A function that lets the player buy goods from the planet and subtracts the
@@ -125,32 +127,33 @@ def buyGoods():
     print("The prices are as followed")
     for key,value in prices.items():
         print(key +": " + str(value))
-    ichoice = input("What do you want to buy: wheat[1], iron[2] or phones[3]?")
-    number = int(input("How many do you want to buy?"))
-    if(number <= cargoSpaceCalk()):
-        if(ichoice == "1"):
-            checkmoney = money - (prices['wheat'] * number)
-            if(checkmoney >= 0):
-                money = money - (prices['wheat'] * number)
-                wares['wheat'] += number
-            else:
-                print("Not enough money to buy this item")
-        if(ichoice == "2"):
-            checkmoney = money - (prices['iron'] * number)
-            if(checkmoney >= 0):
-                money = money - (prices['iron'] * number)
-                wares['iron'] += number
-            else:
-                print("Not enough money to buy this item")
-        if(ichoice == "3"):
-            checkmoney = money - (prices['phone'] * number)
-            if(checkmoney >= 0):
-                money = money - (prices['phone'] * number)
-                wares['phone'] += number
-            else:
-                print("Not enough money to buy this item")
-    else:
-        print("Not enough Space")
+    ichoice = input("What do you want to buy: wheat[1], iron[2], phones[3] or nothing[0]?")
+    if(ichoice != "0"):
+        number = int(input("How many do you want to buy?"))
+        if(number <= cargoSpaceCalk()):
+            if(ichoice == "1"):
+                checkmoney = money - (prices['wheat'] * number)
+                if(checkmoney >= 0):
+                    money = money - (prices['wheat'] * number)
+                    wares['wheat'] += number
+                else:
+                    print("Not enough money to buy this item")
+            if(ichoice == "2"):
+                checkmoney = money - (prices['iron'] * number)
+                if(checkmoney >= 0):
+                    money = money - (prices['iron'] * number)
+                    wares['iron'] += number
+                else:
+                    print("Not enough money to buy this item")
+            if(ichoice == "3"):
+                checkmoney = money - (prices['phone'] * number)
+                if(checkmoney >= 0):
+                    money = money - (prices['phone'] * number)
+                    wares['phone'] += number
+                else:
+                    print("Not enough money to buy this item")
+        else:
+            print("Not enough Space")
     input("Press return to continue")
     
         
@@ -255,6 +258,7 @@ def buyShip():
         
 def mainMenu():
     while(True):
+        print("---------------------------------------------------------------")
         print("Welcome to " + activePlanet.__class__.__name__ + " planet " + activePlanet.getName())
         print("You have " + str(money) + " money")
         print("")
