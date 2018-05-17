@@ -212,6 +212,7 @@ def buyShip():
                         ships.insert(len(ships), tempShip)
                         print("You bought a Fighter Ship")
                         print()
+                        break
                     else:
                         print("You can't afford this ship")
                         print()
@@ -234,6 +235,7 @@ def buyShip():
                         ships.insert(len(ships), tempShip)
                         print("You bought a Cargo Ship")
                         print()
+                        break
                     else:
                         print("You can't afford this ship")
                         print()
