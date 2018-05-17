@@ -238,13 +238,13 @@ def buyShip():
                         print("You can't afford this ship")
                         print()
                 if choice == '3':
-                    break
-                
-        if choice == '0':
+                    break        
+        elif(choice == "0"):
             print()
             print()
             break
-
+        else:
+            print("Wrong Input")        
     print("You currently have these ships: ")
     cf = 0
     cc = 0
