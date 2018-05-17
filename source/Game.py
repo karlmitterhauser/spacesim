@@ -30,14 +30,14 @@ def randomEvent():
     global money
     print("You are under attack Captain" +name)
     yourPower = firePowerCalk()
-    print("Your firepower is" +str(firePowerCalk()))
+    print("Your firepower is " +str(firePowerCalk()))
     enemiePower = int(yourPower * round(uniform(0.7,1.1),1))
-    print("The enemies firepower is" +str(enemiePower))
+    print("The enemies firepower is " +str(enemiePower))
     if(enemiePower >= yourPower):
         print("You lose!")
         sys.exit(0)
     else:
-        print("You win and get the money of the enemies")
+        print("You win and get the money of the enemies ("+str(enemiePower)+")")
         money = money + enemiePower
     input("Press return to continue")    
 def travel():
@@ -93,7 +93,7 @@ def sellGoods():
     for key,value in prices.items():
         print(key +": " + str(value))
     ichoice = input("What do you want to sell: wheat[1], iron[2], phones[3] or nothing[0]?")
-    if(ichoice != "0"):
+    if(ichoice == "1" or ichoice == "2" or ichoice == "3"):
         number = int(input("How many do you want to sell?"))
         if(ichoice == "1"):
             if(wares['wheat'] >= number):
@@ -129,7 +129,7 @@ def buyGoods():
     for key,value in prices.items():
         print(key +": " + str(value))
     ichoice = input("What do you want to buy: wheat[1], iron[2], phones[3] or nothing[0]?")
-    if(ichoice != "0"):
+    if(ichoice == "1" or ichoice == "2" or ichoice == "3"):
         number = int(input("How many do you want to buy?"))
         if(number <= cargoSpaceCalk()):
             if(ichoice == "1"):
@@ -226,22 +226,27 @@ def mainMenu():
         print("[3] Check wares")
         print("[4] Buy goods")
         print("[5] Sell goods")
-        print("[0] Travel to the next planet")
+        print("[6] Travel to the next planet")
+        print("[0] Exit Game")
         choice = 0
         choice = input()
         if(choice == "1"):
             buyShip()
-        if(choice == "2"):
+        elif(choice == "2"):
             print("You have " +str(cargoSpaceCalk()) + " CargoSpace")
             input("Press return to continue")
-        if(choice == "3"):
+        elif(choice == "3"):
             checkWares()    
-        if(choice == "4"):
+        elif(choice == "4"):
             buyGoods()
-        if(choice == "5"):
+        elif(choice == "5"):
             sellGoods()
-        if(choice == "0"):
+        elif(choice == "6"):
             travel()
+        elif(choice == "0"):
+            sys.exit(0)
+        else:
+            print("Wrong Input")
 #Setup
 name = input("Please enter your name: ")
 print("Welcome to SpaceSim " + name + "!")
