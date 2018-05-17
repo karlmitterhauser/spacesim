@@ -113,7 +113,8 @@ def sellGoods():
                 wares['phone'] = wares['phone'] - number
             else:
                 print("Not enough phones to sell")
-
+    input("Press return to continue")
+    
 def buyGoods():
     '''
     A function that lets the player buy goods from the planet and subtracts the
