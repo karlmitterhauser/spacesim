@@ -11,6 +11,7 @@ from HighTech import HighTech
 import sys
 from random import randint
 from random import uniform
+from _overlapped import NULL
 
 #Variables
 money = 1000
@@ -31,14 +32,19 @@ def randomEvent():
     print("You are under attack Captain" +name)
     yourPower = firePowerCalk()
     print("Your firepower is " + str(firePowerCalk()))
-    enemiePower = int(yourPower * round(uniform(0.7,1.1),1))
-    print("The enemies firepower is " + str(enemiePower))
-    if(enemiePower >= yourPower):
+    enemyPower = int(yourPower * round(uniform(0.7,1.1),1))
+    print("The enemies firepower is " + str(enemyPower))
+    if(enemyPower >= yourPower):
         print("You lose!")
+        print()
+        print("Stats:")
+        print("    Wares:")
+        checkWares()
+        print("    Money: \n" + str(money))
         sys.exit(0)
     else:
         print("You win and get the money of the enemies")
-        money = money + enemiePower
+        money = money + enemyPower
     input("Press return to continue")    
 def travel():
     '''
@@ -125,32 +131,41 @@ def buyGoods():
     print("The prices are as followed")
     for key,value in prices.items():
         print(key +": " + str(value))
-    ichoice = input("What do you want to buy: wheat[1], iron[2] or phones[3]?")
-    number = int(input("How many do you want to buy?"))
-    if(number <= cargoSpaceCalk()):
-        if(ichoice == "1"):
-            checkmoney = money - (prices['wheat'] * number)
-            if(checkmoney >= 0):
-                money = money - (prices['wheat'] * number)
-                wares['wheat'] += number
-            else:
-                print("Not enough money to buy this item")
-        if(ichoice == "2"):
-            checkmoney = money - (prices['iron'] * number)
-            if(checkmoney >= 0):
-                money = money - (prices['iron'] * number)
-                wares['iron'] += number
-            else:
-                print("Not enough money to buy this item")
-        if(ichoice == "3"):
-            checkmoney = money - (prices['phone'] * number)
-            if(checkmoney >= 0):
-                money = money - (prices['phone'] * number)
-                wares['phone'] += number
-            else:
-                print("Not enough money to buy this item")
-    else:
-        print("Not enough Space")
+    
+    while (True):
+        try:
+            ichoice = int(input("What do you want to buy: wheat[1], iron[2] or phones[3]?"))
+            number = int(input("How many do you want to buy?"))
+            break
+        except:
+            print("Please enter a valid number")
+            print()
+        
+    if(number != NULL):        
+        if(number <= cargoSpaceCalk()):
+            if(ichoice == 1):
+                checkmoney = money - (prices['wheat'] * number)
+                if(checkmoney >= 0):
+                    money = money - (prices['wheat'] * number)
+                    wares['wheat'] += number
+                else:
+                    print("Not enough money to buy this item")
+            if(ichoice == 2):
+                checkmoney = money - (prices['iron'] * number)
+                if(checkmoney >= 0):
+                    money = money - (prices['iron'] * number)
+                    wares['iron'] += number
+                else:
+                    print("Not enough money to buy this item")
+            if(ichoice == 3):
+                checkmoney = money - (prices['phone'] * number)
+                if(checkmoney >= 0):
+                    money = money - (prices['phone'] * number)
+                    wares['phone'] += number
+                else:
+                    print("Not enough money to buy this item")
+        else:
+            print("Not enough Space")
     input("Press return to continue")
     
         
@@ -235,7 +250,7 @@ def buyShip():
                         print()
                 if choice == '3':
                     break
-                
+                    
         if choice == '0':
             print()
             print()
