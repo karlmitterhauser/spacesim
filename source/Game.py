@@ -43,7 +43,7 @@ def randomEvent():
         print("    Money: \n" + str(money))
         sys.exit(0)
     else:
-        print("You win and get the money of the enemies")
+        print("You win and get the money of the enemies(" +str(enemiePower)+")")
         money = money + enemyPower
     input("Press return to continue")    
 def travel():
@@ -98,26 +98,29 @@ def sellGoods():
     print("The selling prices are as followed")
     for key,value in prices.items():
         print(key +": " + str(value))
-    ichoice = input("What do you want to sell: wheat[1], iron[2] or phones[3]?")
-    number = int(input("How many do you want to sell?"))
-    if(ichoice == "1"):
-        if(wares['wheat'] >= number):
-            money = money + (prices['wheat'] * number)
-            wares['wheat'] = wares['wheat'] - number
-        else:
-            print("Not enough wheat to sell")
-    if(ichoice == "2"):
-        if(wares['iron'] >= number):
-            money = money + (prices['iron'] * number)
-            wares['iron'] = wares['iron'] - number
-        else:
-            print("Not enough Iron to sell")
-    if(ichoice == "3"):
-        if(wares['phone'] >= number):
-            money = money + (prices['phone'] * number)
-            wares['phone'] = wares['phone'] - number
-        else:
-            print("Not enough phones to sell")
+    ichoice = input("What do you want to sell: wheat[1], iron[2], phones[3] or nothing[any other key]?")
+    if(ichoice == "1" or ichoice == "2" or ichoice == "3"):
+        number = int(input("How many do you want to sell?"))
+        if(ichoice == "1"):
+            if(wares['wheat'] >= number):
+                money = money + (prices['wheat'] * number)
+                wares['wheat'] = wares['wheat'] - number
+            else:
+                print("Not enough wheat to sell")
+        if(ichoice == "2"):
+            if(wares['iron'] >= number):
+                money = money + (prices['iron'] * number)
+                wares['iron'] = wares['iron'] - number
+            else:
+                print("Not enough Iron to sell")
+        if(ichoice == "3"):
+            if(wares['phone'] >= number):
+                money = money + (prices['phone'] * number)
+                wares['phone'] = wares['phone'] - number
+            else:
+                print("Not enough phones to sell")
+    input("Press return to continue")
+    
 def buyGoods():
     '''
     A function that lets the player buy goods from the planet and subtracts the
@@ -143,14 +146,14 @@ def buyGoods():
         
     if(number != NULL):        
         if(number <= cargoSpaceCalk()):
-            if(ichoice == 1):
+            if(ichoice == 1)
                 checkmoney = money - (prices['wheat'] * number)
                 if(checkmoney >= 0):
                     money = money - (prices['wheat'] * number)
                     wares['wheat'] += number
                 else:
                     print("Not enough money to buy this item")
-            if(ichoice == 2):
+            if(ichoice == 2)
                 checkmoney = money - (prices['iron'] * number)
                 if(checkmoney >= 0):
                     money = money - (prices['iron'] * number)
@@ -223,6 +226,7 @@ def buyShip():
                         ships.insert(len(ships), tempShip)
                         print("You bought a Fighter Ship")
                         print()
+                        break
                     else:
                         print("You can't afford this ship")
                         print()
@@ -245,17 +249,18 @@ def buyShip():
                         ships.insert(len(ships), tempShip)
                         print("You bought a Cargo Ship")
                         print()
+                        break
                     else:
                         print("You can't afford this ship")
                         print()
                 if choice == '3':
-                    break
-                    
-        if choice == '0':
+                    break        
+        elif(choice == "0"):
             print()
             print()
             break
-
+        else:
+            print("Wrong Input")        
     print("You currently have these ships: ")
     cf = 0
     cc = 0
@@ -270,6 +275,7 @@ def buyShip():
         
 def mainMenu():
     while(True):
+        print("---------------------------------------------------------------")
         print("Welcome to " + activePlanet.__class__.__name__ + " planet " + activePlanet.getName())
         print("You have " + str(money) + " money")
         print("")
@@ -279,22 +285,27 @@ def mainMenu():
         print("[3] Check wares")
         print("[4] Buy goods")
         print("[5] Sell goods")
-        print("[0] Travel to the next planet")
+        print("[6] Travel to the next planet")
+        print("[0] Exit Game")
         choice = 0
         choice = input()
         if(choice == "1"):
             buyShip()
-        if(choice == "2"):
+        elif(choice == "2"):
             print("You have " +str(cargoSpaceCalk()) + " CargoSpace")
             input("Press return to continue")
-        if(choice == "3"):
+        elif(choice == "3"):
             checkWares()    
-        if(choice == "4"):
+        elif(choice == "4"):
             buyGoods()
-        if(choice == "5"):
+        elif(choice == "5"):
             sellGoods()
-        if(choice == "0"):
+        elif(choice == "6"):
             travel()
+        elif(choice == "0"):
+            sys.exit(0)
+        else:
+            print("Wrong Input")
 #Setup
 name = input("Please enter your name: ")
 print("Welcome to SpaceSim " + name + "!")
