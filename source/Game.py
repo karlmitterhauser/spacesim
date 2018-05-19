@@ -278,31 +278,30 @@ def mainMenu():
         print("---------------------------------------------------------------")
         print("Welcome to " + activePlanet.__class__.__name__ + " planet " + activePlanet.getName())
         print("You have " + str(money) + " money")
+        print("Your current Cargospace is: " +str(cargoSpaceCalk()))
+        print("Your current Firepower is: " +str(firePowerCalk()))
         print("")
         print("What would you like to do?")
         print("[1] Buy ship")
-        print("[2] Check Cargo Space")
-        print("[3] Check wares")
-        print("[4] Buy goods")
-        print("[5] Sell goods")
-        print("[6] Travel to the next planet")
+        print("[2] Check wares")
+        print("[3] Buy goods")
+        print("[4] Sell goods")
+        print("[5] Travel to the next planet")
         print("[0] Exit Game")
         choice = 0
         choice = input()
         if(choice == "1"):
             buyShip()
         elif(choice == "2"):
-            print("You have " +str(cargoSpaceCalk()) + " CargoSpace")
-            input("Press return to continue")
-        elif(choice == "3"):
             checkWares()    
-        elif(choice == "4"):
+        elif(choice == "3"):
             buyGoods()
-        elif(choice == "5"):
+        elif(choice == "4"):
             sellGoods()
-        elif(choice == "6"):
+        elif(choice == "5"):
             travel()
         elif(choice == "0"):
+            print("See you late Captain")
             sys.exit(0)
         else:
             print("Wrong Input")
