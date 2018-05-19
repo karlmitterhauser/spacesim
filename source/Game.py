@@ -146,14 +146,14 @@ def buyGoods():
         
     if(number != NULL):        
         if(number <= cargoSpaceCalk()):
-            if(ichoice == 1)
+            if(ichoice == 1):
                 checkmoney = money - (prices['wheat'] * number)
                 if(checkmoney >= 0):
                     money = money - (prices['wheat'] * number)
                     wares['wheat'] += number
                 else:
                     print("Not enough money to buy this item")
-            if(ichoice == 2)
+            if(ichoice == 2):
                 checkmoney = money - (prices['iron'] * number)
                 if(checkmoney >= 0):
                     money = money - (prices['iron'] * number)
