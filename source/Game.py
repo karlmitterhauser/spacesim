@@ -11,7 +11,6 @@ from HighTech import HighTech
 import sys
 from random import randint
 from random import uniform
-from _overlapped import NULL
 
 #Variables
 money = 1000
